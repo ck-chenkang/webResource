@@ -120,5 +120,67 @@ export default {
 </style>
 ```
 
-## 升级vue2 到vue3
+## 安装ElementUI2
 
+[element ui doc](https://element.eleme.cn/#/zh-CN/component/installation)
+
+```
+npm i element-ui -S
+```
+
+引入element（全局引入）
+
+main.js增加如下内容：
+
+```js
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI);
+```
+
+修改components/LeftMenus.vue 
+
+```vue
+<template>
+  <div>
+    <el-button type="success">成功按钮</el-button>
+    <h1>Hello World</h1>
+  </div>
+</template>
+```
+
+查看结果
+
+![image-20211207164741703](Imag/image-20211207164741703.png)
+
+## 安装less
+
+安装依赖包
+
+注意：请使用less-loader@5安装less-loader 5.0.0版本，最新版本在vue2中可能无法使用，会报错哦
+
+```
+npm install less less-loader@5 --save-dev
+```
+
+找一个组件中添加如下内容测试：
+
+```vue
+<template>
+	<div class="test1">
+    red
+    <div class="test2">green</div>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.test1{
+  color: red;
+  .test2{
+    color:green;
+  }
+}
+</style>
+```
+
+![image-20211207174818685](Imag/image-20211207174818685.png)
