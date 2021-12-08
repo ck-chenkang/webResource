@@ -10,10 +10,10 @@
         <el-submenu index="1">
           <template slot="title">
             <i class="el-icon-eleme"></i>
-            <span>Eement</span>
+            <span>{{ $store.menus }}</span>
           </template>
           <el-menu-item-group>
-            <el-menu-item index="1-1" @click="toMenu()">
+            <el-menu-item index="1-1" @click="test">
               NavMenu 导航菜单
             </el-menu-item>
           </el-menu-item-group>
@@ -31,17 +31,20 @@ export default {
     }
   },methods:{
     test(){
-      console.log("----------");
+      console.log(this.$store.state.menus.test);
     },
     toMenu(value){
       switch(value){
-        case "navMenu":
-          this.$router.push("");
-          break;
-        case "":
+        case "element\/navMenu":
+          console.log(value);
           this.$router.push("/index");
+          break;
+        case undefined:
+          console.log("in 404");
+          this.$router.push("/404");
+          break;
       }
-
+      console.log(value);
     }
   }
 };

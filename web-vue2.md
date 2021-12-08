@@ -212,3 +212,74 @@ npm install less less-loader@5 --save-dev
 }
 ```
 
+## 安装vuex
+
+安装
+
+```
+npm i vuex -s
+```
+
+新建store文件夹
+
+新建 store/models/menus.js
+
+```js
+const menus = {
+  state: {
+    test: "hello",
+    data: [{
+      span: "Element",
+      subMenu: [
+        {
+          span: "NavMenu 导航菜单",
+          url: "element\/navMenu"
+        }
+      ]
+    }
+    ]
+  }
+}
+export default menus;
+```
+
+新建 store/index.js
+
+```js
+import Vue from 'vue'
+import Vuex from 'vuex'
+import menus from './models/menus'
+
+//挂载Vuex
+Vue.use(Vuex)
+
+//创建VueX对象
+const store = new Vuex.Store({
+  modules: {
+    menus,
+  }
+})
+
+export default store
+```
+
+修改main.js
+
+```js
+import store from './store' 
+
+new Vue({
+  el: '#app',
+  router,
+  store, // 新增
+  components: { App },
+  template: '<App/>'
+})
+```
+
+取值测试
+
+```js
+this.$store.state.menus.test
+```
+
