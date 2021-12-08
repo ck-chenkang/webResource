@@ -7,22 +7,39 @@
         text-color="#fff"
         active-text-color="#ffd04b"
       >
-        <el-submenu
-          v-for="(item1, index1) in $store.state.menus.data"
-          :index="index1"
-          :key="index1"
-        >
-        <!-- :key="index" 不加，会报错 -->
-          <template slot="title">
-            <i class="el-icon-eleme"></i>
-            <span>{{ item1.span }}</span>
-          </template>
-          <el-menu-item-group v-if="item1.subMenu.length != 0">
-            <el-menu-item v-for="(item2, index2) in item1.subMenu" :index="index1 + '-' + index2" @click="toMenu(item2.url)" :key="index2">
-              {{item2.span}}
+        <template v-for="(item, index) in menuData">
+          <!--表示 有一级菜单-->
+          <router-link v-if="!item.noDropdown" :to="item.url" :key="index">
+            <el-menu-item class="dropItem" :index="parseInt(index) + 1">
+              <i class="el-icon-menu"></i>
+              <span slot="title">{{ item.span }}</span>
             </el-menu-item>
-          </el-menu-item-group>
-        </el-submenu>
+          </router-link>
+
+          <!--表示 有二级或者多级菜单 -->
+          <el-submenu
+            v-if="item.subMenu && item.subMenu.length >= 1 && !item.noDropdown"
+            :index="parseInt(index) + 1"
+            :key="index"
+          >
+            <template slot="title">
+              <i class="el-icon-location"></i>
+              <span>{{ item.span }}</span>
+            </template>
+            <!--直接定位到子路由上，子路由也可以实现导航功能-->
+            <router-link
+              v-for="(citem, cindex) in item.subMenu"
+              :to="item.url + citem.url"
+              :key="cindex"
+            >
+              <el-menu-item
+                :index="(parseInt(index) + 1) + '-' + (parseInt(cindex) + 1)"
+              >
+                <span slot="title">{{ citem.span }}</span>
+              </el-menu-item>
+            </router-link>
+          </el-submenu>
+        </template>
       </el-menu>
     </el-row>
   </div>
@@ -31,24 +48,24 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      menuData: {},
+    };
   },
-  methods: {
-    test() {},
-    toMenu(value) {
-      switch (value) {
-        case "element\/navMenu":
-          this.$router.push("/index");
-          break;
-        case undefined:
-          console.log("in 404");
-          this.$router.push("/404");
-          break;
-      }
-    },
-  },
+  mounted() {
+    this.menuData = this.$store.state.menus.data;
+  }
 };
 </script>
 
 <style>
+
+.router-link-active {
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
 </style>
