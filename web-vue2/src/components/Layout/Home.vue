@@ -21,9 +21,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.el-aside {
-  background-color: gray;
-  color: black;
-  width: 10%;
-}
+
 </style>
