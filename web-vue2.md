@@ -184,3 +184,31 @@ npm install less less-loader@5 --save-dev
 ```
 
 ![image-20211207174818685](Imag/image-20211207174818685.png)
+
+## 404页面设置方法
+
+新建 notFound.vue
+
+```vue
+<template>
+<div>
+    <el-empty :image-size="200" image="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" description="404喽"></el-empty>
+</div>
+</template>
+```
+
+路由index.js设置最后添加如下内容：
+
+参考链接：[vue设置404页面](https://blog.csdn.net/przlovecsdn/article/details/81509843)
+
+```js
+{
+    path: "/404",
+        name: "notFound",
+            component: notFound
+}, {
+    path: "*", // 此处需特别注意置于最底部
+        redirect: "/404"
+}
+```
+
