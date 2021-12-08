@@ -1,6 +1,5 @@
 const menus = {
   state: {
-    test: "hello",
     data: [{
       span: "Element",
       subMenu: [
