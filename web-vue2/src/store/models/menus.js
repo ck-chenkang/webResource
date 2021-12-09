@@ -2,14 +2,12 @@ const menus = {
   state: {
     data: [{
       span: "vue",
-      noDropdown: true,
       url: "\/index",
-      icon: "el-icon-eleme",
+      icon: "el-icon-menu",
       subMenu: [
       ]
     }, {
       span: "Element",
-      noDropdown: false,
       url: "\/element",
       icon: "el-icon-eleme",
       subMenu: [
