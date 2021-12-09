@@ -1,9 +1,6 @@
 <template>
   <div>
     <el-menu
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#ffd04b"
     >
       <template v-for="(item, index) in $store.state.menus.data">
         <!--表示 有一级菜单-->
@@ -63,5 +60,6 @@ export default {
 a {
   text-decoration: none;
 }
+
 
 </style>

@@ -22,7 +22,7 @@ export default {
 
 <style lang="less" scoped>
 .home-menu {
-  background-color: #545c64;
+  background-color: #fff;
 
   // top、left、bottom结合 position: absolute定位，刚好完成盒子的定位
   position: absolute;
@@ -32,7 +32,7 @@ export default {
 }
 
 .main {
-  background-color:#545c64;
+  background-color:#fff;
   width: 1670px;
   position: absolute;
   right: 20px;

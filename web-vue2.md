@@ -507,3 +507,30 @@ a {
 
 ```
 
+## 替换左上角的logo
+
+制作logo，并放到如下位置：
+
+![image-20211209161916033](Imag/image-20211209161916033.png)
+
+修改webpack.dev.conf.js
+
+```js
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'index.html',
+      favicon: 'favicon.ico', //增加这一行
+      inject: true
+    }),
+```
+
+修改webpack.prod.conf.js
+
+```
+new HtmlWebpackPlugin({
+      filename: config.build.index,
+      template: 'index.html', 
+      favicon: 'favicon.ico', //增加这一行
+      inject: true,
+```
+
