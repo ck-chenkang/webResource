@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <el-container>
-      <el-aside>
+      <el-aside class="home-menu" width="200px" >
         <left-menu></left-menu>
       </el-aside>
       <el-container>
@@ -21,5 +21,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+.home-menu{
+  height: 906px;
+  background-color: #545c64;
+}
 </style>
