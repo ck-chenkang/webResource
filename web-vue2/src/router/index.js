@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import home from '../components/Layout/home'
-import notFound from '../components/Error/notFound'
+import login from '../components/login'
 import navMenu from '../components/Element/navMenu'
 
 Vue.use(Router)
@@ -40,7 +40,11 @@ const router = new Router({
           component: navMenu
         }
       ]
-    },
+    },{
+      path:'/login',
+      name:"login",
+      component:login
+    }
     // {
     //   path: "/404",
     //   name: "notFound",

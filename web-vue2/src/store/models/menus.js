@@ -1,9 +1,9 @@
 const menus = {
   state: {
     data: [{
-      span: "vue",
-      url: "\/index",
-      icon: "el-icon-menu",
+      span: "login",
+      url: "\/login",
+      icon: "el-icon-user",
       subMenu: [
       ]
     }, {
