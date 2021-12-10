@@ -21,11 +21,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
 .home-menu {
   background-color: #fff;
 
   // top、left、bottom结合 position: absolute定位，刚好完成盒子的定位
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -33,8 +34,8 @@ export default {
 
 .main {
   background-color:#fff;
-  width: 1670px;
-  position: absolute;
+  position: relative;
+  margin-left: 240px;
   right: 20px;
   top: 20px;
   bottom: 20px;
