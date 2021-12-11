@@ -35,7 +35,7 @@
               </el-col>
               <el-col :span="12" :offset="0">
                 <el-form-item>
-                  <el-button type="primary" @click="login('ruleForm')"
+                  <el-button type="primary" @click="login(ruleForm)"
                     >登录</el-button
                   >
                 </el-form-item>
@@ -72,8 +72,11 @@ export default {
         return callback(new Error("账号不能为空"));
       }
 
-      if (new String(value).length < 6) {
-        return callback(new Error("账号至少为6位"));
+      if (value == "admin") {
+      } else {
+        if (new String(value).length < 6) {
+          return callback(new Error("账号至少为6位"));
+        }
       }
     };
     var checkPass = (rule, value, callback) => {
@@ -94,7 +97,15 @@ export default {
     };
   },
   methods: {
-    login(ruleForm) {},
+    login(ruleForm) {
+      window.localStorage.setItem("count", ruleForm.count);
+      var count = window.localStorage.getItem("count");
+      if(count == "admin"){
+        this.$router.push("/index");
+      }else{
+        alert("账号要是admin才可以登录");
+      }
+    },
   },
 };
 </script>
@@ -109,7 +120,7 @@ export default {
   height: 800px;
 }
 
-.login-form{
+.login-form {
   margin-top: 180px;
 }
 
